@@ -1,0 +1,33 @@
+.sesion-container {
+    width: 100%;
+    background-color: #eb445a;
+    border-bottom-right-radius: 20px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+}
+
+.sesion-container ion-item {
+    background-color: #eb445a;
+}
+
+.sesion-container img {
+    width: 100px;
+}
+
+.sesion-container ion-label {
+    font-size: 1.2rem;
+}
+
+ion-list {
+    margin-top: 20px;
+}
+
+ion-item {
+    padding: 20px 0px; 
+    font-size: 1.2rem;
+}
+
+ion-item ion-icon {
+    padding-right: 15px;
+}

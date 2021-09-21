@@ -1,0 +1,7 @@
+{
+  "name": "proyecto-auto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

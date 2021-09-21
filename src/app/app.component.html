@@ -1,0 +1,36 @@
+<ion-app>
+  <ion-menu side="start" type="push" contentId="main">
+    <ion-content>
+      <div class="container ion-padding sesion-container">
+        <ion-item color="danger">
+          <ion-avatar slot="end">
+            <img src="https://png.pngtree.com/png-vector/20190909/ourlarge/pngtree-outline-user-icon-png-image_1727916.jpg">
+          </ion-avatar>
+          <ion-label>Nombre Usuario</ion-label>
+        </ion-item>
+      </div>
+      <div class="list-container">
+        <ion-menu-toggle>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-icon name="car-sport-outline"></ion-icon>Mis viajes
+            </ion-item>
+            <ion-item>
+              <ion-icon name="card-outline"></ion-icon>Mi billetera
+            </ion-item>
+            <ion-item>
+              <ion-icon name="help-outline"></ion-icon>Ayuda
+            </ion-item>
+            <ion-item>
+              <ion-icon name="checkmark-circle-outline"></ion-icon>Centro de seguridad
+            </ion-item>
+            <ion-item>
+              <ion-icon name="call-outline"></ion-icon>Contacto DuocDriver
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>
