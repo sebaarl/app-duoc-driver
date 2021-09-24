@@ -1,0 +1,15 @@
+ion-item {
+    --highlight-height: 0px;
+    border-bottom: 3px solid #eb445a;
+    transition: .6s;
+
+    ion-input {
+        font-size: 18px;
+    }
+
+    a {
+        font-size: 17px;
+        letter-spacing: 0.5px; 
+        text-decoration: none;
+    }
+}

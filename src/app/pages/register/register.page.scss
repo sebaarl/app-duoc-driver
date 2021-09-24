@@ -1,0 +1,51 @@
+ion-content {
+    --overflow: hidden;
+    
+    #header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        h1 {
+            font-weight: 700;
+            font-size: 26px;
+            color: #eb445a;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    }
+    
+    #form {
+        margin-top: 15px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        ion-item {
+            --highlight-height: 0px;
+            // border-bottom: 3px solid #eb445a;
+            transition: .6s;
+            --background: transparent;
+        
+            ion-input {
+                font-size: 18px;
+            }
+        
+            a {
+                font-size: 17px;
+                letter-spacing: 0.5px; 
+                text-decoration: none;
+            }
+        }
+    }
+    
+    ion-button {
+        width: 250px;
+        height: 50px;
+        font-size: 1.2rem;
+        margin-top: 40px;
+    }
+    
+    a {
+        font-size: 18px;
+    }
+}

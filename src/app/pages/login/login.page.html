@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-padding-start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" class="ion-padding-end">
+      <ion-button routerLink="../register">Registrate</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div id="header">
+    <h1>Inicio de sesión</h1>
+  </div>
+  <form #miformulario="ngForm" id='form' align='center' (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type=text name="email" required [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type=password name="password" required [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-button type="submit" shape="round" color="danger" [disabled]="miformulario.invalid" class="animate__animated animate__fadeInRight">
+      Iniciar sesión
+    </ion-button>
+    <div class="ion-margin-top">
+      <a routerLink="/">Olvidaste tu contraseña?</a>
+    </div>
+  </form>
+</ion-content>
+<app-piepagina></app-piepagina>

@@ -7,25 +7,40 @@
             <ion-menu-button menuId="main" name='menu-alt-left'></ion-menu-button>
           </ion-buttons>
         </div>
+        <div class="welcome-container" slot="end" *ngIf="usuario!==''">
+          <ion-chip class="animate__animated animate__bounce">
+            <ion-label color="light">Bienvenido {{ usuario.name }}!</ion-label>
+          </ion-chip>
+        </div>
       </ion-toolbar>
     </ion-header>
-    <div id="container">
-      <ion-text color="light">
-        <h1 class="ion-font-family" color="light">¡Bienvenido!</h1>
-      </ion-text>
-      <ion-text color="light">
-        <h2 color="light">@Usuario</h2>
-      </ion-text>
+    <div id="container" *ngIf="usuario===''">
+      <div class="welcome-container ion-margin-bottom" slot="end">
+        <ion-text color="primary">
+          <ion-label color="light">¡Bienvenido!</ion-label>
+        </ion-text>
+      </div>
       <div class="container ion-padding" lines="">
-        <ion-button shape="round" class="login-button" color="danger">
+        <ion-button shape="round" class="login-button" color="danger" routerLink="../login">
           Iniciar sesión
         </ion-button>
         <div class="line"></div>
         <div class="ion-padding-top">
-          <ion-button shape="round" class="register-button" color="primary">
+          <ion-button shape="round" class="register-button" color="primary" routerLink="../register">
             Crear una cuenta
           </ion-button>
         </div>
+      </div>
+    </div>
+    <div class="travel-container ion-padding" lines="" *ngIf="usuario!==''">
+      <ion-button shape="round" class="login-button" color="danger" routerLink="">
+        Solicitar viaje
+      </ion-button>
+      <div class="line"></div>
+      <div class="ion-padding-top">
+        <ion-button shape="round" class="register-button" color="primary" routerLink="">
+          Crear viaje
+        </ion-button>
       </div>
     </div>
   </div>

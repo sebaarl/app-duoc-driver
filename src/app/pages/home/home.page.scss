@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600&display=swap");
-
 ion-content {
   --background: url("https://noticias.coches.com/wp-content/uploads/2012/02/autopista.jpg") 0 0/100% 100% no-repeat !important;
   ion-header {
@@ -9,9 +7,9 @@ ion-content {
   }
 
   ion-content {
-    font-family: 'Poppins';
+    font-family: "Poppins";
   }
-  
+
   --overflow: hidden;
 
   .background-content {
@@ -59,23 +57,46 @@ ion-content {
   margin-top: 30px;
 }
 
+.welcome-container {
+  margin-top: 30px;
+}
+
 ion-menu-button {
   font-size: 2.5rem;
   color: white;
 }
 
-ion-text h1 {
-  font-size: 2.5em;
-  color: white;
+ion-chip {
+  ion-label {
+    font-size: 16px;
+  }
 }
 
-ion-text h2 {
-  margin-bottom: 50px;
-  color: white;
+ion-text {
+  ion-label {
+    font-size: 2.5em;
+    color: white;
+    margin-bottom: 50px;
+  }
 }
 
 ion-button {
   width: 300px;
+  height: 50px;
   font-size: 1.2rem;
   margin-bottom: 20px;
+}
+
+.travel-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  align-items: center;
+}
+
+ion-chip {
+  ion-label {
+    color: #fff;
+  }
 }
