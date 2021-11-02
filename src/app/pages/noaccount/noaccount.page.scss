@@ -1,0 +1,109 @@
+ion-content {
+    --background: url("https://noticias.coches.com/wp-content/uploads/2012/02/autopista.jpg") 0 0/100% 100% no-repeat !important;
+    ion-header {
+      ion-toolbar {
+        --background: transparent;
+      }
+    }
+  
+    ion-content {
+      font-family: "Poppins";
+    }
+  
+    --overflow: hidden;
+  
+    .background-content {
+      width: 100%;
+      height: 100vh;
+      background-color: #0000009f;
+      font-family: "Poppins";
+    }
+
+    ion-text {
+      h1 {
+        color: white;
+      }
+    }
+
+  }
+  
+  #container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  .menu-container {
+    width: 50px;
+    height: 50px;
+    background-color: #eb445a;
+    border-radius: 50%;
+    display: flex;
+    margin-top: 30px;
+  }
+  
+  .welcome-container {
+    margin-top: 30px;
+  }
+  
+  ion-menu-button {
+    font-size: 2.5rem;
+    color: white;
+  }
+  
+  ion-chip {
+    ion-label {
+      font-size: 16px;
+    }
+  }
+  
+  ion-text {
+    ion-label {
+      font-size: 2.5em;
+      color: white;
+      margin-bottom: 50px;
+    }
+  }
+  
+  ion-button {
+    width: 300px;
+    height: 50px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .travel-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    align-items: center;
+  }
+  
+  ion-chip {
+    ion-label {
+      color: #fff;
+    }
+  }

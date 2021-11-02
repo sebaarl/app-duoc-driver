@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +8,20 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  user: any;
 
-  usuario:string='';
+  constructor(
+    private auth: AuthService, 
+    private router: Router) {
+  }
 
-  constructor(private activeroute: ActivatedRoute, private router: Router) {
-    this.activeroute.queryParams.subscribe(
-      params => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.usuario = this.router.getCurrentNavigation().extras.state.user;
-      }
+  logout(){
+    this.auth.signOut();
+  }
+
+  ngOnInit() {
+    this.auth.user$.subscribe(user => {
+      this.user = user;
     })
   }
 }

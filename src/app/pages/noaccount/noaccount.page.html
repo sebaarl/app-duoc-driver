@@ -1,0 +1,27 @@
+<ion-content overflow="false" fullscreen="true">
+  <div class="background-content">
+    <ion-header class="ion-no-border">
+      <ion-toolbar class="ion-padding">
+      </ion-toolbar>
+    </ion-header>
+    <div id="container">
+      <div class="welcome-container ion-margin-bottom" slot="end">
+        <ion-text>
+          <h1 id="welcome">¡Bienvenido a DuocDriver!</h1>
+        </ion-text>
+      </div>
+      <div class="container ion-padding" lines="">
+        <ion-button class="register-button" color="primary" routerLink="../register" fill="outline">
+          Crear una cuenta
+        </ion-button>
+        <span class="already">Tienes una cuenta?</span>
+        <div class="ion-padding-top">
+          <ion-button class="login-button" color="danger" routerLink="../login" fill="outline">
+            Iniciar sesión
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<app-piepagina></app-piepagina>

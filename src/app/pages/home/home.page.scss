@@ -18,6 +18,12 @@ ion-content {
     background-color: #0000009f;
     font-family: "Poppins";
   }
+
+  ion-text {
+    h1 {
+      color: white;
+    }
+  }
 }
 
 #container {
@@ -91,7 +97,7 @@ ion-button {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 80px;
   align-items: center;
 }
 

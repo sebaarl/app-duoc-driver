@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import 'animate.css'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,42 +11,35 @@ import 'animate.css'
 })
 export class LoginPage implements OnInit {
 
-  user={
-    email:'',
-    password:'',
-    name:'Peter Parker',
-  }
+  email: string;
+  password: string;
 
-  constructor(private alertController:AlertController, private router:Router) { }
+  constructor(
+    private auth: AuthService,
+    private toastr: ToastController,
+
+    ) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    if (this.user.email==="usuario@duocuc.cl" && this.user.password=="1234") {
-      let navextra:NavigationExtras = {
-        state: {user: this.user}
-      }
-
-      this.router.navigate(['/home'], navextra);
-    } 
-    else {
-      this.presentAlert();
+  login() {
+    if (this.email && this.password) {
+      this.auth.signIn(this.email, this.password);
+    } else {
+      this.toast('Por favor ingresa tus credenciales!', 'warning');
     }
   }
 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'No se pudo iniciar sesión',
-      message: 'Correo electrónico o contraseña incorrecto',
-      buttons: ['Aceptar']
+  async toast(message, status) {
+    const toast = await this.toastr.create({
+      message: message,
+      color: status,
+      position: 'bottom',
+      duration: 2000
     });
 
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
+    toast.present();
   }
 
 }

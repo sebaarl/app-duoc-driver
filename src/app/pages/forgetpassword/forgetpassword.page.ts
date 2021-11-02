@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgetpassword',
@@ -8,50 +11,51 @@ import { AlertController } from '@ionic/angular';
 })
 export class ForgetpasswordPage implements OnInit {
 
-  user= {
-    email: ""
-  }
+  email: string;
 
-  constructor(private alertController:AlertController) { }
+  constructor(
+    private afauth: AngularFireAuth,
+    private toastr: ToastController,
+    private router: Router,
+    private loadingCtrl: LoadingController,
+  ) { }
 
   ngOnInit() {
   }
 
-  onSubmitEmail() {
-    if (this.user.email==="usuario@duocuc.cl") {
-      this.errorAltert();
-    }
-    else {
-      this.presentAlert();
+  async resetPassword() {
+
+    if (this.email) {
+      const loading = await this.loadingCtrl.create({
+        message: 'Enviando enlace...',
+        spinner: 'crescent',
+        showBackdrop: true,
+      });
+      loading.present();
+
+      this.afauth.sendPasswordResetEmail(this.email).then(() => {
+        loading.dismiss();
+        this.toast('Por favor revisa tu email!', 'success')
+        this.router.navigate(['/login']);
+      })
+      .catch((error) => {
+        this.toast(error.message, 'danger');
+      })
+
+    } else {
+      this.toast('Por favor ingresa tu correo electronico!', 'danger')
     }
   }
 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Envio exitoso',
-      message: 'Se envió el código de verificación a su correo',
-      buttons: ['Aceptar']
-    });
+  async toast(message, status) {
+    const toast = await this.toastr.create({
+      message: message,
+      color: status,
+      position: 'bottom',
+      duration: 2000
+    })
 
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async errorAltert() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Envio fallido',
-      message: 'No se logró enviar el código',
-      buttons: ['Aceptar']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
+    toast.present();
   }
 
 }

@@ -7,38 +7,23 @@
             <ion-menu-button menuId="main" name='menu-alt-left'></ion-menu-button>
           </ion-buttons>
         </div>
-        <div class="welcome-container" slot="end" *ngIf="usuario!==''">
-          <ion-chip class="animate__animated animate__bounce">
-            <ion-label color="light">Bienvenido {{ usuario.name }}!</ion-label>
+        <div class="welcome-container" slot="end">
+          <ion-chip>
+            <ion-label color="light" (click)="logout()">Cerrar sesión</ion-label>
           </ion-chip>
         </div>
       </ion-toolbar>
     </ion-header>
-    <div id="container" *ngIf="usuario===''">
-      <div class="welcome-container ion-margin-bottom" slot="end">
-        <ion-text color="primary">
-          <ion-label color="light">¡Bienvenido!</ion-label>
-        </ion-text>
-      </div>
-      <div class="container ion-padding" lines="">
-        <ion-button shape="round" class="login-button" color="danger" routerLink="../login">
-          Iniciar sesión
-        </ion-button>
-        <div class="line"></div>
-        <div class="ion-padding-top">
-          <ion-button shape="round" class="register-button" color="primary" routerLink="../register">
-            Crear una cuenta
-          </ion-button>
-        </div>
-      </div>
-    </div>
-    <div class="travel-container ion-padding" lines="" *ngIf="usuario!==''">
-      <ion-button shape="round" class="login-button" color="danger" routerLink="">
+    <div class="travel-container" lines="" align="center">
+      <ion-text>
+        <h1 color="light" id="welcome">¡Bienvenido</h1>
+        <h1 color="light" >{{ user?.userName }}!</h1>
+      </ion-text>
+      <ion-button class="login-button" color="danger" routerLink="" fill="outline">
         Solicitar viaje
       </ion-button>
-      <div class="line"></div>
       <div class="ion-padding-top">
-        <ion-button shape="round" class="register-button" color="primary" routerLink="">
+        <ion-button class="register-button" color="primary" routerLink="" fill="outline">
           Crear viaje
         </ion-button>
       </div>
