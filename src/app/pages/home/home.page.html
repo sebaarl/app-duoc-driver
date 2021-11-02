@@ -8,9 +8,7 @@
           </ion-buttons>
         </div>
         <div class="welcome-container" slot="end">
-          <ion-chip>
-            <ion-label color="light" (click)="logout()">Cerrar sesión</ion-label>
-          </ion-chip>
+          <ion-icon name="person-circle-outline" (click)="presentActionSheet()"></ion-icon>
         </div>
       </ion-toolbar>
     </ion-header>

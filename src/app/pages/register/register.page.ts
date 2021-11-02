@@ -17,8 +17,6 @@ export class RegisterPage implements OnInit {
   phone: string;
   password: string;
 
-  registerForm: FormGroup;
-
   constructor(
     private afs: AngularFirestore,
     private afauth: AngularFireAuth,
@@ -28,11 +26,6 @@ export class RegisterPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      name: new FormControl('', [
-        Validators.required
-      ])
-    });
   }
 
   async register() {

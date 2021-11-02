@@ -24,6 +24,11 @@ ion-content {
       color: white;
     }
   }
+
+  ion-icon {
+    font-size: 60px;
+  }
+
 }
 
 #container {
@@ -60,7 +65,7 @@ ion-content {
   background-color: #eb445a;
   border-radius: 50%;
   display: flex;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .welcome-container {
