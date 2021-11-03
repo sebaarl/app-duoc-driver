@@ -17,11 +17,11 @@
         <h1 color="light" id="welcome">¡Bienvenido</h1>
         <h1 color="light" >{{ user?.userName }}!</h1>
       </ion-text>
-      <ion-button class="login-button" color="danger" routerLink="" fill="outline">
+      <ion-button class="login-button" color="danger" fill="outline" [routerLink]="['/solicitar-viaje']">
         Solicitar viaje
       </ion-button>
       <div class="ion-padding-top">
-        <ion-button class="register-button" color="primary" routerLink="" fill="outline">
+        <ion-button class="register-button" color="primary" [routerLink]="['/crear-viaje']" fill="outline">
           Crear viaje
         </ion-button>
       </div>

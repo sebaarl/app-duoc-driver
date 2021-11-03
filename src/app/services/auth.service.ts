@@ -1,14 +1,15 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
+import { User } from '../interfaces/models';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import * as firebase from 'firebase/compat/app'
-import { LoadingController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,8 @@ export class AuthService {
     private router: Router,
     private LoadingCtrl: LoadingController,
     private toastr: ToastController,
+    private servicios: HttpClient,
+    public alertController: AlertController
   ) {
     this.user$ = this.afauth.authState
       .pipe(
@@ -52,7 +55,7 @@ export class AuthService {
           .then((data) => {
             if (!data.user.emailVerified) {
               loading.dismiss();
-              this.toast('Por favor verifica tu email', 'warning');
+              this.alert('Por favor verifica tu email', 'Alerta');
               this.afauth.signOut();
             } else {
               loading.dismiss();
@@ -61,12 +64,12 @@ export class AuthService {
           })
           .catch(error => {
             loading.dismiss();
-            this.toast(error.message, 'danger');
+            this.alert(error.message, 'Error');
           })
       })
       .catch(error => {
         loading.dismiss();
-        this.toast(error.message, 'danger');
+        this.alert(error.message, 'Error');
       })
   }
 
@@ -78,18 +81,25 @@ export class AuthService {
     loading.present();
     this.afauth.signOut().then(() => {
       loading.dismiss();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/noaccount']);
     })
   }
 
-  async toast(message, status) {
-    const toast = await this.toastr.create({
-      message: message,
-      color: status,
-      position: 'bottom',
-      duration: 2000
-    });
-    toast.present();
+  getuserAuth() {
+    return this.afauth.user;
   }
 
+  async alert(message, header) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
 }

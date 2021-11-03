@@ -1,0 +1,17 @@
+ion-content {
+    ion-label {
+        color: white;
+    }
+
+    ion-list {
+        ion-item {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+#price {
+    display: flex;
+    align-items: center;
+}

@@ -17,8 +17,9 @@ export class LoginPage implements OnInit {
   constructor(
     private auth: AuthService,
     private toastr: ToastController,
+    public alertController: AlertController
 
-    ) { }
+  ) { }
 
   ngOnInit() {
   }
@@ -27,19 +28,22 @@ export class LoginPage implements OnInit {
     if (this.email && this.password) {
       this.auth.signIn(this.email, this.password);
     } else {
-      this.toast('Por favor ingresa tus credenciales!', 'warning');
+      this.alert('Por favor ingresa tus credenciales!', 'Alerta');
     }
   }
 
-  async toast(message, status) {
-    const toast = await this.toastr.create({
+  async alert(message, header) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
       message: message,
-      color: status,
-      position: 'bottom',
-      duration: 2000
+      buttons: ['Aceptar']
     });
 
-    toast.present();
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 
 }

@@ -22,11 +22,11 @@
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input type=password name="password" required [(ngModel)]="password"></ion-input>
     </ion-item>
-    <div class="ion-margin-top">
-      <a routerLink="../forgetpassword">Olvidaste tu contraseña?</a>
-    </div>
     <ion-button type="submit" color="danger" fill="outline">Iniciar sesión</ion-button>
     <p>Aún no estás registrado?</p>
     <ion-button color="primary" fill="outline" [routerLink]="['/register']">Registrate Aquí</ion-button>
+    <div class="ion-margin-top">
+      <a routerLink="../forgetpassword">Olvidaste tu contraseña?</a>
+    </div>
   </form>
 </ion-content>

@@ -18,6 +18,7 @@ export class ForgetpasswordPage implements OnInit {
     private toastr: ToastController,
     private router: Router,
     private loadingCtrl: LoadingController,
+    public alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -31,31 +32,34 @@ export class ForgetpasswordPage implements OnInit {
         spinner: 'crescent',
         showBackdrop: true,
       });
+
       loading.present();
 
       this.afauth.sendPasswordResetEmail(this.email).then(() => {
         loading.dismiss();
-        this.toast('Por favor revisa tu email!', 'success')
+        this.alert('Por favor revisa tu email!', 'Envio exitoso')
         this.router.navigate(['/login']);
       })
-      .catch((error) => {
-        this.toast(error.message, 'danger');
-      })
+        .catch((error) => {
+          this.alert(error.message, 'Error');
+        })
 
     } else {
-      this.toast('Por favor ingresa tu correo electronico!', 'danger')
+      this.alert('Por favor ingresa tu correo electronico!', 'Alerta')
     }
   }
 
-  async toast(message, status) {
-    const toast = await this.toastr.create({
+  async alert(message, header) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
       message: message,
-      color: status,
-      position: 'bottom',
-      duration: 2000
-    })
+      buttons: ['Aceptar']
+    });
 
-    toast.present();
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
-
 }

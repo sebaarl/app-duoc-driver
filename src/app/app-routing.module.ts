@@ -36,6 +36,15 @@ const routes: Routes = [
     path: 'noaccount',
     loadChildren: () => import('./pages/noaccount/noaccount.module').then( m => m.NoaccountPageModule)
   },
+  {
+    path: 'solicitar-viaje',
+    loadChildren: () => import('./pages/solicitar-viaje/solicitar-viaje.module').then( m => m.SolicitarViajePageModule), canActivate: [AuthGuard]
+  },
+  {
+    path: 'crear-viaje',
+    loadChildren: () => import('./pages/crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule), canActivate: [AuthGuard]
+  },
+
 
 ];
 

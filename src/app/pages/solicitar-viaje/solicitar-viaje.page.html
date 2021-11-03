@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ion-padding-start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" class="ion-padding-end">
+      <ion-button [routerLink]="['/home']">Inicio</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar></ion-searchbar>
+  <ion-list *ngFor="let viaje of viajes">
+    <div class="ion-padding-start" *ngIf="viaje.active === true" (click)="solicitarViaje()">
+      <ion-text>
+        <h5 color="light">
+          <ion-icon name="car-sport-outline" class="ion-padding-end"></ion-icon>
+          {{ viaje.tripStart }}
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+          {{ viaje.tripEnd }}s
+        </h5>
+      </ion-text>
+      <div id="price">
+        <ion-icon name="cash-outline" class="ion-padding-end"></ion-icon>
+        <p>${{ viaje.tripPrice }}</p>
+        <ion-icon name="people-outline" class="ion-padding-end ion-padding-start" ></ion-icon>
+        <p>{{ viaje.capacity }}</p>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
