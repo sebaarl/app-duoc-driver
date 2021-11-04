@@ -10,6 +10,7 @@ import { AlertController, LoadingController, ToastController } from '@ionic/angu
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { AngularFireStorage } from '@angular/fire/compat/storage'
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,8 @@ export class AuthService {
     private LoadingCtrl: LoadingController,
     private toastr: ToastController,
     private servicios: HttpClient,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private storage: AngularFireStorage
   ) {
     this.user$ = this.afauth.authState
       .pipe(
@@ -102,4 +104,17 @@ export class AuthService {
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
+
+  uploadImage(file: any, path: string, nombre: string): Promise<String> {
+    return new Promise((resolve) => {
+
+      const filePath = path + '/' + nombre;
+      const ref = this.storage.ref(filePath);
+      const task = ref.put(file);
+
+      resolve(path)
+
+    })
+  }
+
 }

@@ -9,23 +9,33 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-searchbar></ion-searchbar>
-  <ion-list *ngFor="let viaje of viajes">
-    <div class="ion-padding-start" *ngIf="viaje.active === true" (click)="solicitarViaje()">
-      <ion-text>
-        <h5 color="light">
-          <ion-icon name="car-sport-outline" class="ion-padding-end"></ion-icon>
-          {{ viaje.tripStart }}
-          <ion-icon name="arrow-forward-outline"></ion-icon>
-          {{ viaje.tripEnd }}s
-        </h5>
-      </ion-text>
-      <div id="price">
-        <ion-icon name="cash-outline" class="ion-padding-end"></ion-icon>
-        <p>${{ viaje.tripPrice }}</p>
-        <ion-icon name="people-outline" class="ion-padding-end ion-padding-start" ></ion-icon>
-        <p>{{ viaje.capacity }}</p>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div id="header">
+    <h1>Solicita tu viaje</h1>
+  </div>
+  <ion-searchbar class="ion-padding" [(ngModel)]="searchTerm" animated placeholder="Busca tu destino"></ion-searchbar>
+  <div *ngFor="let viaje of viajes | filter:searchTerm">
+    <ion-card class="ion-margin-top" *ngIf="viaje.active === true" (click)="viewTrip(viaje.tripId, viaje.userName, viaje.userEmail, viaje.userPhone, viaje.capacity, viaje.tripPrice, viaje.tripStart, viaje.tripEnd)">
+      <div class="ion-padding-start">
+        <ion-text>
+          <h5 color="light">
+            <ion-icon name="car-sport-outline" class="ion-padding-end"></ion-icon>
+            {{ viaje.tripStart }}
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+            {{ viaje.tripEnd }}
+          </h5>
+        </ion-text>
+        <div id="price">
+          <ion-icon name="cash-outline" class="ion-padding-end"></ion-icon>
+          <p>${{ viaje.tripPrice }}</p>
+          <ion-icon name="people-outline" class="ion-padding-end ion-padding-start"></ion-icon>
+          <p>{{ viaje.capacity }}</p>
+        </div>
       </div>
-    </div>
-  </ion-list>
+    </ion-card>
+  </div>
 </ion-content>

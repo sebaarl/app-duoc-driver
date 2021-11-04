@@ -8,6 +8,8 @@ import { SolicitarViajePageRoutingModule } from './solicitar-viaje-routing.modul
 
 import { SolicitarViajePage } from './solicitar-viaje.page';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DetalleComponent } from 'src/app/components/detalle/detalle.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -15,8 +17,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     IonicModule,
     SolicitarViajePageRoutingModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
-  declarations: [SolicitarViajePage]
+  declarations: [SolicitarViajePage, DetalleComponent]
 })
 export class SolicitarViajePageModule {}

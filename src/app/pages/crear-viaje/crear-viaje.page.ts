@@ -37,11 +37,11 @@ export class CrearViajePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.auth.getuserAuth().subscribe(user => {
-      this.idUser = user.uid;
-      this.nameUser = user.displayName;
-      this.phoneUser = user.phoneNumber;
-    });
+    this.auth.user$.subscribe(user => {
+      this.idUser = user.userId;
+      this.nameUser = user.userName;
+      this.phoneUser = user.userPhone;
+    })
   }
 
   async createTrip() {
@@ -62,7 +62,7 @@ export class CrearViajePage implements OnInit {
         'tripEnd': this.end,
         'tripPrice': this.prices,
         'capacity': this.capacity,
-        'created': Date.now(),
+        'created': new Date(),
         'active': true,
         'userId': this.idUser,
         'userName': this.nameUser,

@@ -10,7 +10,7 @@ export const firebaseConfig = {
   apiKey: "AIzaSyAnt1GZJbTpS98RVrD9LblrdYkrZ3fWfpE",
   authDomain: "app-duocdriver.firebaseapp.com",
   projectId: "app-duocdriver",
-  storageBucket: "app-duocdriver.appspot.com",
+  storageBucket: "gs://app-duocdriver.appspot.com/",
   messagingSenderId: "997681759496",
   appId: "1:997681759496:web:ff7fbc8c9f2a458fe698bd"
 };

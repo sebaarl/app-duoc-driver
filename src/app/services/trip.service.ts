@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import * as firebase from 'firebase/compat/app'
-import { LoadingController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -26,6 +26,7 @@ export class TripService {
     private router: Router,
     private LoadingCtrl: LoadingController,
     private toastr: ToastController,
+    private alertController: AlertController,
   ) {
 
   }
@@ -35,7 +36,29 @@ export class TripService {
   }
 
   getTrips(): Observable<any> {
-    return this.afs.collection('trip').snapshotChanges();
+    return this.afs.collection('trip', ref => ref.orderBy('created', 'desc')).snapshotChanges();
+  }
+
+  async getById(collection, id) {
+    try {
+      return await this.afs.collection(collection).doc(id).get();
+    } catch (error) {
+      this.alert('Viaje no encontrado', 'Error');
+    }
+  }
+
+  async alert(message, header) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 
 }

@@ -8,13 +8,13 @@
           </ion-buttons>
         </div>
         <div class="welcome-container" slot="end">
-          <ion-icon name="person-circle-outline" (click)="presentActionSheet()"></ion-icon>
+          <ion-icon name="person-outline" (click)="presentActionSheet()"></ion-icon>
         </div>
       </ion-toolbar>
     </ion-header>
     <div class="travel-container" lines="" align="center">
       <ion-text>
-        <h1 color="light" id="welcome">¡Bienvenido</h1>
+        <h1 color="light" id="welcome">¡Bienvenid@</h1>
         <h1 color="light" >{{ user?.userName }}!</h1>
       </ion-text>
       <ion-button class="login-button" color="danger" fill="outline" [routerLink]="['/solicitar-viaje']">

@@ -35,7 +35,7 @@ export class HomePage {
         text: 'Perfil',
         icon: 'person-outline',
         handler: () => {
-          console.log('Perfil')
+          this.router.navigate(['/perfil-usuario']);
         }
       }, {
         text: 'Cerrar sesión',
