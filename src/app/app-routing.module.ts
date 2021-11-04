@@ -43,17 +43,11 @@ const routes: Routes = [
   {
     path: 'crear-viaje',
     loadChildren: () => import('./pages/crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule), canActivate: [AuthGuard]
-  },  {
-    path: 'detalle-viaje',
-    loadChildren: () => import('./pages/detalle-viaje/detalle-viaje.module').then( m => m.DetalleViajePageModule)
   },
   {
     path: 'perfil-usuario',
     loadChildren: () => import('./pages/perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioPageModule)
   },
-
-
-
 ];
 
 @NgModule({

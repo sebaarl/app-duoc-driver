@@ -3,7 +3,7 @@ ion-content {
 
     .sesion-container {
         width: 100%;
-        background-color: #eb445a;
+        background-color: #3a79db;
         border-bottom-right-radius: 20px;
         height: 150px;
         display: flex;
@@ -11,7 +11,7 @@ ion-content {
     }
     
     .sesion-container ion-item {
-        background-color: #eb445a;
+        --background: transparent;
     }
     
     .sesion-container img {

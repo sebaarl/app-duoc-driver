@@ -1,14 +1,12 @@
 <ion-app>
   <div *ngIf="user !== null">
-    <ion-menu side="start" type="push" contentId="main" >
+    <ion-menu side="start" type="push" contentId="main">
       <ion-content overflow="false">
         <div class="container ion-padding sesion-container">
-          <ion-item color="danger">
-            <ion-avatar slot="end">
-              <img src="{{ user?.photo }}">
-            </ion-avatar>
-            <ion-label>{{ user?.userName }}</ion-label>
-          </ion-item>
+          <ion-avatar slot="end" class="ion-padding-end">
+            <img src="{{ user?.photo }}">
+          </ion-avatar>
+          <ion-label>{{ user?.userName }}</ion-label>
         </div>
         <div id="list-container">
           <ion-menu-toggle>
