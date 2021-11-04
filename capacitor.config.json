@@ -2,5 +2,6 @@
 	"appId": "io.ionic.starter",
 	"appName": "proyecto-auto",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"npmCliente": "npm"
 }
