@@ -14,13 +14,35 @@
     <h1>Crea una viaje</h1>
   </div>
   <form #createTripform="ngForm" id='form' align='center' (ngSubmit)="createTrip()">
-    <ion-item>
+    <!-- <ion-item>
       <ion-label position="floating">Dónde inicia el viaje?</ion-label>
       <ion-input type="text" [(ngModel)]="start" name="start" required></ion-input>
-    </ion-item>
-    <ion-item>
+    </ion-item> -->
+    <!-- <ion-item>
       <ion-label position="floating">Hacia dónde vas?</ion-label>
       <ion-input type="text" [(ngModel)]="end" name="end" required></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-label class="label" position="floating">Selecciona el inicio de tu viaje</ion-label>
+      <ion-select [interfaceOptions]="customActionSheetOptions" interface="alert" placeholder="Selecciona el inicio"
+        [(ngModel)]="start" name="start" required>
+        <ion-select-option value="DuocUC">DuocUC</ion-select-option>
+        <ion-select-option value="Mall del Trebol">Mall del Trebol</ion-select-option>
+        <ion-select-option value="Hotel Ibis">Hotel Ibis</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label" position="floating">Selecciona el destino de tu viaje</ion-label>
+      <ion-select [interfaceOptions]="customActionSheetOptions" interface="alert" placeholder="Selecciona el destino"
+        [(ngModel)]="end" name="end" required>
+        <ion-select-option value="Mall del Centro">Mall del Centro</ion-select-option>
+        <ion-select-option value="Plaza de la Independencia">Plaza de la Independencia</ion-select-option>
+        <ion-select-option value="Mall Mirador Bio-Bio">Mall Mirador Bio-Bio</ion-select-option>
+        <ion-select-option value="Collao">Collao</ion-select-option>
+        <ion-select-option value="Hualpen">Hualpen</ion-select-option>
+        <ion-select-option value="Talcahuano">Talcahuano</ion-select-option>
+        <ion-select-option value="San Pedro de la Paz">San Pedro de la Paz</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Asigna un valor a tu viaje</ion-label>
