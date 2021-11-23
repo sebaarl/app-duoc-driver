@@ -1,0 +1,7 @@
+{
+	"appId": "com.sebaarl.duocdriver",
+	"appName": "DuocDriver",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"npmCliente": "npm"
+}

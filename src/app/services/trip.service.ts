@@ -35,12 +35,9 @@ export class TripService {
     return this.afs.collection('trips').add(viaje);
   }
 
-  async updateTrip(collection, id, dato) {
-    try {
-      return await this.afs.collection(collection).doc(id).set(dato);
-    } catch(error) {
-      this.alert('Viaje no encontrado', 'Error');
-    }
+  updateTrip(data: any, path: string, id: string) {
+    const collection = this.afs.collection(path);
+    return collection.doc(id).update(data);
   }
 
   getTrips(): Observable<any> {

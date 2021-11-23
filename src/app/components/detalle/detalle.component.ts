@@ -48,6 +48,28 @@ export class DetalleComponent implements OnInit {
   }
 
   confirmarViaje() {
+    const capacidad = this.capacity - 1;
+    const path = 'trip';
+    const id = this.id;
+    let doc = {};
+
+    if (capacidad === 0) {
+      doc = {
+        capacity: 0,
+        active: false
+      }
+
+    } else {
+      doc = {
+        capacity: capacidad,
+        active: true
+      };
+
+    }
+
+    this.trips.updateTrip(doc, path, id).then(() => {
+      console.log('actualizado con exito')
+    })
   }
 
 }
