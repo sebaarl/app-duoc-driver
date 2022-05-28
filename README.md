@@ -3,4 +3,3 @@
 
 ## Integrantes: 
 ##  Sebastian Rivera
-##  Esteban Seguel
